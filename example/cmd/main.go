@@ -15,7 +15,7 @@ w.Write([]byte("pong\n"))
 }
 
 func main(){
-//fmt.Println("1111111111111111")
+fmt.Println("1111111111111111")
 //http.Handle("/",http.FileServer(http.Dir("/root/www")))
 http.HandleFunc("/",writeRootData)
 http.HandleFunc("/hello",writeData)
