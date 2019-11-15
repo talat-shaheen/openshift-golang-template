@@ -1,4 +1,4 @@
-# amsokol/golang-openshift:1.9.2
+# talatsh/golang-openshift:1.9.2
 FROM centos/s2i-base-centos7
 
 # Maintainer name in the image metadata
