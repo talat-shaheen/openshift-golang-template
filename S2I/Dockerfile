@@ -2,7 +2,7 @@
 FROM centos/s2i-base-centos7
 
 # Maintainer name in the image metadata
-LABEL maintainer="github@amsokol.digital"
+LABEL maintainer="github@talat-shaheen"
 
 # Builder environment variable to inform users about application you provide them
 ENV GOLANG_OPENSHIFT_BUILDER_VERSION 1.0
