@@ -19,7 +19,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func listenAndServe(port string) {
 	fmt.Printf("serving on %s\n", port)
-	err := http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe(":"+port, r)
 	if err != nil {
 		panic("ListenAndServe: " + err.Error())
 	}
@@ -45,7 +45,7 @@ func main() {
 
         fmt.Fprintf(w, "You've requested the book: %s on page %s\n", title, page)
     })
-
+	r.HandleFunc("/",helloHandler)
     //http.ListenAndServe(":8080", r)
 	go listenAndServe(port)
 
