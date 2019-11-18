@@ -32,7 +32,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 //}
 
 func main() {
-	tmpl := template.Must(template.ParseFiles("forms.html"))
+	tmpl := template.Must(template.ParseFiles("/opt/app-root/src/github.com/talat-shaheen/openshift-golang-template/example/cmd/forms.html"))
 	r := mux.NewRouter()
 	//http.HandleFunc("/", helloHandler)
 	port := os.Getenv("PORT")
