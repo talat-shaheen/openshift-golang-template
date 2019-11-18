@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(w, "You've requested the book: %s on page %s\n", title, page)
     })
 	r.HandleFunc("/",helloHandler)
-     go http.ListenAndServe(":8080", r)
+      http.ListenAndServe(":8080", r)
 	//go listenAndServe(port)
 
 	//select {}
