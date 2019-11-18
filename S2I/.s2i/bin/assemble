@@ -49,6 +49,7 @@ then
 else
 	# for backwards compatibility
 	cp -Rf /tmp/s2i*/upload/src/. ./
+	echo `ls -Ral`
 fi
 
 mkdir -p $GOPATH/bin
