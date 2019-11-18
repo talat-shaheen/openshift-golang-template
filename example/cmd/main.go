@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
+	//"os"
+	"github.com/gorilla/mux"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -25,17 +26,27 @@ func listenAndServe(port string) {
 }
 
 func main() {
-	http.HandleFunc("/", helloHandler)
+	r := mux.NewRouter()
+	//http.HandleFunc("/", helloHandler)
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
 		port = "8080"
 	}
-	go listenAndServe(port)
+	//go listenAndServe(port)
 
-	port = os.Getenv("SECOND_PORT")
-	if len(port) == 0 {
-		port = "8888"
-	}
+	//port = os.Getenv("SECOND_PORT")
+	//if len(port) == 0 {
+	//	port = "8888"
+	//}
+	r.HandleFunc("/books/{title}/page/{page}", func(w http.ResponseWriter, r *http.Request) {
+        vars := mux.Vars(r)
+        title := vars["title"]
+        page := vars["page"]
+
+        fmt.Fprintf(w, "You've requested the book: %s on page %s\n", title, page)
+    })
+
+    //http.ListenAndServe(":8080", r)
 	go listenAndServe(port)
 
 	select {}
