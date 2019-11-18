@@ -45,13 +45,13 @@ cd $SOURCE_CODE
 if test -d /tmp/src
 then
 	cp -Rf /tmp/src/. ./
-	echo `ls -Ral`
+	echo `ls -aR`
 else
 	# for backwards compatibility
 	cp -Rf /tmp/s2i*/upload/src/. ./
-	echo `ls -Ral`
+	echo `ls -aR`
 fi
-
+echo  `ls -aR`
 mkdir -p $GOPATH/bin
 
 if [ -f "./Gopkg.toml" ]
