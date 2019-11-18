@@ -23,6 +23,9 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 ENV PATH /usr/local/go/bin:$PATH
 
 RUN go get -u github.com/gorilla/mux
+ENV SOURCE_CONTEXT_DIR /example
+ENV GOPROJECT_ROOT github.com/talat-shaheen/openshift-golang-template/example
+ENV GOPROJECT_CMD cmd
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
 
