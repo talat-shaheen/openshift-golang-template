@@ -42,6 +42,8 @@ SOURCE_CODE="$GOPATH/src/$ROOT_PACKAGE"
 echo "---> Installing application source in folder \"$SOURCE_CODE\""
 mkdir -p $SOURCE_CODE
 cd $SOURCE_CODE
+echo "---> check src content ..."
+echo `ls -aR /tmp/src`
 if test -d /tmp/src
 then
 	cp -Rf /tmp/src/. ./
@@ -51,7 +53,9 @@ else
 	cp -Rf /tmp/s2i*/upload/src/. ./
 	echo `ls -aR`
 fi
-echo  `ls -aR`
+echo "---> check src content ..."
+echo  `ls -aR . `
+
 mkdir -p $GOPATH/bin
 
 if [ -f "./Gopkg.toml" ]
