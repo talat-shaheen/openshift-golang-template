@@ -7,7 +7,7 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 #SOURCE_CONTEXT_DIR="/example"
-GOPROJECT_ROOT="github.com/talat-shaheen/openshift-golang-template/example"
+#GOPROJECT_ROOT="github.com/talat-shaheen/openshift-golang-template/example"
 #GOPROJECT_CMD="cmd"
 if [[ "$1" == "-h" ]]; then
 	# If the 'test1' assemble script is executed with '-h' flag,
@@ -23,20 +23,20 @@ if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
 fi
 
 echo "---> Сlarify the root package for go application"
-#if [[ -n "${GOPROJECT_ROOT/[ ]*\n/}" ]]
-#then
-#	echo "Root package is set to \"$GOPROJECT_ROOT\""
-#    ROOT_PACKAGE=$GOPROJECT_ROOT
-#else
-#	ROOT_PACKAGE=$(echo "$SOURCE_REPOSITORY" | sed -re "s/(https:\/\/|git@)([^?]+)\.git/\2/g" | sed -re "s/:/\//g")
-#	if [[ -n "${SOURCE_CONTEXT_DIR/[ ]*\n/}" ]]
-#	then
-#		ROOT_PACKAGE="$ROOT_PACKAGE/$SOURCE_CONTEXT_DIR"
-#		echo "SOURCE_CONTEXT_DIR is \"$SOURCE_CONTEXT_DIR\", so root package is \"$ROOT_PACKAGE\""
-#	else
-#		echo "SOURCE_CONTEXT_DIR is empty, so root package is \"$ROOT_PACKAGE\""
-#	fi
-#fi
+if [[ -n "${GOPROJECT_ROOT/[ ]*\n/}" ]]
+then
+	echo "Root package is set to \"$GOPROJECT_ROOT\""
+    ROOT_PACKAGE=$GOPROJECT_ROOT
+else
+	ROOT_PACKAGE=$(echo "$SOURCE_REPOSITORY" | sed -re "s/(https:\/\/|git@)([^?]+)\.git/\2/g" | sed -re "s/:/\//g")
+	if [[ -n "${SOURCE_CONTEXT_DIR/[ ]*\n/}" ]]
+	then
+		ROOT_PACKAGE="$ROOT_PACKAGE/$SOURCE_CONTEXT_DIR"
+		echo "SOURCE_CONTEXT_DIR is \"$SOURCE_CONTEXT_DIR\", so root package is \"$ROOT_PACKAGE\""
+	else
+		echo "SOURCE_CONTEXT_DIR is empty, so root package is \"$ROOT_PACKAGE\""
+	fi
+fi
 ROOT_PACKAGE="github.com/talat-shaheen/openshift-golang-template/example"
 SOURCE_CODE="$GOPATH/src/$ROOT_PACKAGE"
 echo "---> Installing application source in folder \"$SOURCE_CODE\""
