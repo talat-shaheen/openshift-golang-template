@@ -45,6 +45,7 @@ cd $SOURCE_CODE
 if test -d /tmp/src
 then
 	cp -Rf /tmp/src/. ./
+	ls -Ral ./
 else
 	# for backwards compatibility
 	cp -Rf /tmp/s2i*/upload/src/. ./
