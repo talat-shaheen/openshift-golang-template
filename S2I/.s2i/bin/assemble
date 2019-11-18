@@ -7,8 +7,8 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 #SOURCE_CONTEXT_DIR="/example"
-#GOPROJECT_ROOT="github.com/talat-shaheen/openshift-golang-template/example"
-#GOPROJECT_CMD="cmd"
+GOPROJECT_ROOT="github.com/talat-shaheen/openshift-golang-template/example"
+GOPROJECT_CMD="cmd"
 if [[ "$1" == "-h" ]]; then
 	# If the 'test1' assemble script is executed with '-h' flag,
 	# print the usage.
