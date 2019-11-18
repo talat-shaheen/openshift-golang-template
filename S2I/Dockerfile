@@ -22,6 +22,7 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 	&& rm golang.tar.gz
 ENV PATH /usr/local/go/bin:$PATH
 
+RUN go get -u github.com/gorilla/mux
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
 
