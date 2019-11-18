@@ -5,7 +5,13 @@ import (
 	"net/http"
 	"os"
 	"github.com/gorilla/mux"
+	"html/template"
 )
+type ContactDetails struct {
+    Email   string
+    Subject string
+    Message string
+}
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	response := os.Getenv("RESPONSE")
@@ -26,6 +32,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 //}
 
 func main() {
+	tmpl := template.Must(template.ParseFiles("forms.html"))
 	r := mux.NewRouter()
 	//http.HandleFunc("/", helloHandler)
 	port := os.Getenv("PORT")
@@ -46,6 +53,23 @@ func main() {
         fmt.Fprintf(w, "You've requested the book: %s on page %s\n", title, page)
     })
 	r.HandleFunc("/",helloHandler)
+	r.HandleFunc("/forms", func(w http.ResponseWriter, r *http.Request) {
+        if r.Method != http.MethodPost {
+            tmpl.Execute(w, nil)
+            return
+        }
+
+        details := ContactDetails{
+            Email:   r.FormValue("email"),
+            Subject: r.FormValue("subject"),
+            Message: r.FormValue("message"),
+        }
+
+        // do something with details
+        _ = details
+
+        tmpl.Execute(w, struct{ Success bool }{true})
+    })
       http.ListenAndServe(":8080", r)
 	//go listenAndServe(port)
 
