@@ -17,13 +17,13 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Servicing request.")
 }
 
-func listenAndServe(port string) {
-	fmt.Printf("serving on %s\n", port)
-	err := http.ListenAndServe(":"+port, r)
-	if err != nil {
-		panic("ListenAndServe: " + err.Error())
-	}
-}
+//func listenAndServe(port string) {
+//	fmt.Printf("serving on %s\n", port)
+//	err := http.ListenAndServe(":"+port, nil)
+//	if err != nil {
+//		panic("ListenAndServe: " + err.Error())
+//	}
+//}
 
 func main() {
 	r := mux.NewRouter()
@@ -46,9 +46,9 @@ func main() {
         fmt.Fprintf(w, "You've requested the book: %s on page %s\n", title, page)
     })
 	r.HandleFunc("/",helloHandler)
-    //http.ListenAndServe(":8080", r)
-	go listenAndServe(port)
+     go http.ListenAndServe(":8080", r)
+	//go listenAndServe(port)
 
-	select {}
+	//select {}
 }
 
