@@ -38,7 +38,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	//db related code
 	 fmt.Println("connection string is")
-	connectionString := user + ":" + password + "@(" + ip + ":" + portno + ")/" + dbname + "?parseTime=true"
+	connectionString := os.Getenv("user") + ":" + os.Getenv("password") + "@(" + os.Getenv("ip") + ":" + os.Getenv("portno") + ")/" + os.Getenv("dbname") + "?parseTime=true"
 	 fmt.Println(connectionString)
 	db, err := sql.Open("mysql", connectionString)
     if err != nil {
