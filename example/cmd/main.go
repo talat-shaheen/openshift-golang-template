@@ -37,7 +37,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	//db related code
-	db, err := sql.Open("mysql", user:password@(ip:portno)/dbname?parseTime=true")
+	db, err := sql.Open("mysql", user:password@(ip:portno)/dbname?parseTime=true)
     if err != nil {
         log.Fatal(err)
     }
