@@ -23,6 +23,7 @@ RUN curl -fsSL "$GOLANG_DOWNLOAD_URL" -o golang.tar.gz \
 ENV PATH /usr/local/go/bin:$PATH
 
 RUN go get -u github.com/gorilla/mux
+RUN go get -u github.com/go-sql-driver/mysql
 
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
