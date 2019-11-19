@@ -37,7 +37,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	//db related code
-	db, err := sql.Open(dbname, user:password@(ip:port)/user?parseTime=true")
+	db, err := sql.Open(dbname, user:password@(ip:portno)/user?parseTime=true")
     if err != nil {
         log.Fatal(err)
     }
